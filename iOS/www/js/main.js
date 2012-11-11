@@ -4,14 +4,10 @@
 
 //Ensure Device Is Ready With PhoneGap
 document.addEventListener("deviceready", onDeviceReady, false);
-document.addEventListener("deviceready", connectionCapture, false);
-document.addEventListener("deviceready", contactsCapture, false);
-document.addEventListener("deviceready", notificationsCapture, false);
-document.addEventListener("deviceready", photoCapture, false);
 
 function onDeviceReady(){
-	
-};
+	alert("Device Ready");
+}
 
 //Connection Capture Native Feature
 function connectionCapture(){
@@ -26,20 +22,20 @@ function connectionCapture(){
     capture[Connection.NONE]     = 'No network connection';
     
     alert('Connection type: ' + capture[networkConnection]);
-};
+}
 
 //Contacts Capture Native Feature
 function contactsCapture(){
 	var contacts = new ContactsFindOptions();
-	options.filter = "";
+	options.filter = "Justin";
 	var fields = ["displayName", "name"];
 	navigator.contacts.find(fields, onSuccess, onError);
-};
+}
 
 //Loop through contacts to find each name and display them
 function onSuccess(contacts) {
-	for (var i=0, i<contacts.length; i++){
-		console.log("Display Name = " + contacts[i].displayName);
+	for (var i=0; i<contacts.length; i++){
+		alert("Display Name = " + contacts[i].displayName);
 	}
 }
 
@@ -53,7 +49,7 @@ function photoCapture(){
 	pictureSource=navigator.camera.PictureSourceType;
 	destinationType=navigator.camera.DestinationType;
 	navigator.camera.getPicture(onPhotoSuccess, onPhotoError, { quality: 50 });
-};
+}
 
 //Applies CSS styling to photo taken
 function onPhotoSuccess(imageData){
@@ -68,10 +64,41 @@ function onPhotoError(message){
 }
 
 //Notification Native Feature
-function notificationsCapture(){
+/* function notificationsCapture(){
 	navigator.notification.alert(
 		'This Alert Works!', //message
+		alertGone, //callback
 		'Notification', //title
 		'OK', //buttonName
-	);
-};
+		);
+} */
+
+function twitterCall(url){
+	$.ajax({
+			'url': 'http://search.twitter.com/search.json?q=barack%20obama',
+			'type': 'GET',
+			'dataType': 'jsonp',
+			'success': function(response){
+				for(i=0, j=response.results.length; i<j; i++){
+					var tweet = response.results[i];
+					$('<p>'+ '<img src="' + response.results[i].profile_image_url + '" />' + response.results[i].text + '</p>'				
+				).appendTo('#twitterFeed');
+			};
+		}
+	});
+}
+
+function vimeoCall(url){
+	$.ajax({
+			'url': 'http://vimeo.com/api/v2/justinrowe/videos.json',
+			'type': 'GET',
+			'dataType': 'jsonp',
+			'success': function(data){
+				for(i=0, j=data.results.length; i<j; i++){
+					var movie = data.results[i];
+					$('<p>'+ '<img src="' + data.results[i].thumbnail_small + '" />' + data.results[i].title + '</p>'				
+				).appendTo('#vimeoFeed');
+			};
+		}
+	});
+}

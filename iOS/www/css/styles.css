@@ -1,21 +1,49 @@
 /*
 Name: Justin M. Rowe
-Course: Visual Frameworks 1207 (VFW)
-Assignment: Project 4
+Course: Advanced Visual Frameworks (AVF) 1211
+Assignment: Project 3
 Full Sail University
 */
 
 body {
-	background-color: rgb(131,150,146);
+	background-image: url("../img/background.gif");
+	background-repeat: repeat;
 	font-family: Helvetica, Arial, sans-serif;
 	margin: 0px;
 	text-align: center;
 }
 
-header {
-	color: rgb(229,218,183);
-	font-size: 200%;
-	display: inline;
+p.name {
+	font-family: Tahoma, Arial, sans-serif;
+	color: rgb(239,66,35);
+	font-size: 370%;
+	position: relative;
+	top: -30px;
+	right: 175px;
+	
+}
+
+p.appName {
+	font-family: Tahoma, Arial, sans-serif;
+	color: rgb(136,140,120);
+	font-size: 270%;
+	position: relative;
+	top: -105px;
+	right: 135px;
+}
+
+p.course {
+	font-family: Tahoma, Arial, sans-serif;
+	color: rgb(153,127,96);
+	font-size: 180%;
+	position: relative;
+	top: -155px;
+	right: 200px;
+}
+
+.page {
+	position: relative;
+	top: -150px;
 }
 
 a {
@@ -23,28 +51,85 @@ a {
 }
 
 h1 {
-	color: rgb(229,218,183);
+	color: rgb(239,66,35);
 }
 
 h2 {
-	color: rgb(87,105,119);
+	color: rgb(239,66,35);
 	text-decoration: underline;
 }
 
 #topbox {
-	border: 3px solid #000000;
+	position: relative;
+	left: 5px;
+	width: 355px;
+	height: 380px;
+	border: 3px solid rgb(109,88,73);
 	border-radius: 10px 10px 10px 10px;
-	background-color: rgb(184,185,142);
+	background-color: rgb(208,207,171);
 	color: rgb(46,104,120);
 	margin: 20px 10px auto 10px;
 }
 
 #middlebox {
-	border: 3px solid #000000;
+	position: relative;
+	left: 380px;
+	top: -396px;
+	width: 355px;
+	height: 380px;
+	border: 3px solid rgb(109,88,73);
 	border-radius: 10px 10px 10px 10px;
-	background-color: rgb(184,185,142);
+	background-color: rgb(208,207,171);
 	color: rgb(46,104,120);
 	margin: 10px 10px auto 10px;
+}
+
+#bottombox {
+	position: relative;
+	top: -380px;
+	left: 5px;
+	width: 420px;
+	height: 340px;
+	border: 3px solid rgb(109,88,73);
+	border-radius: 10px 10px 10px 10px;
+	background-color: rgb(208,207,171);
+	color: rgb(46,104,120);
+	margin: 10px 10px auto 10px;
+}
+
+#videobox {
+	margin: 10px 0px 0px 0px;
+}
+
+#twitterbox {
+	position: relative;
+	top: -250px
+	width: 720px;
+	height: 600px;
+	border: 3px solid rgb(109,88,73);
+	border-radius: 10px 10px 10px 10px;
+	background-color: rgb(208,207,171);
+	color: rgb(46,104,120);
+	margin: 20px 10px auto 10px;
+}
+
+#footerbox {
+	position: relative;
+	top: -850px;
+	left: 465px;
+	width: 250px;
+	height: 165px;
+	border: 3px solid rgb(109,88,73);
+	border-radius: 10px 10px 10px 10px;
+	background-color: rgb(208,207,171);
+	color: rgb(46,104,120);
+	margin: 20px 10px auto 10px;
+}
+
+.backbutton {
+	position: relative;
+	left: 150px;
+	top: -50px;
 }
 
 .button {
@@ -66,6 +151,7 @@ h2 {
 
 .gray {
 	color: #ffffff;
+	font-size: 105%;
 	border: solid 1px #595959;
 	background: rgb(131,150,146);
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(131,150,146)), to(#595959));
