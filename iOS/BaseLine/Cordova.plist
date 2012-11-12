@@ -24,6 +24,8 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
+		<string>http://b.vimeocdn.com/ts/326/993/326993125_640.jpg</string>
+		<string>http://vimeo.com/api/v2/justinrowe/videos.json?</string>
 		<string>https://github.com/JustinRowe15/AVF-Justin-Rowe</string>
 		<string>https://github.com/JustinRowe15/AVF-Justin-Rowe/tree/gh-pages</string>
 		<string>http://search.twitter.com/search.json?q=barack%20obama</string>

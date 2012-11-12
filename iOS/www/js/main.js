@@ -1,12 +1,12 @@
 //Justin M. Rowe
 //AVF 1211
-//Project 2
+//Project 3
 
 //Ensure Device Is Ready With PhoneGap
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady(){
-	alert("Device Ready");
+	console.log("Device Ready");
 }
 
 //Connection Capture Native Feature
@@ -24,24 +24,22 @@ function connectionCapture(){
     alert('Connection type: ' + capture[networkConnection]);
 }
 
-//Contacts Capture Native Feature
-function contactsCapture(){
-	var contacts = new ContactsFindOptions();
-	options.filter = "Justin";
-	var fields = ["displayName", "name"];
-	navigator.contacts.find(fields, onSuccess, onError);
+//Accelerator Native Feature
+function acceleratorCapture(){
+	navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
 }
 
-//Loop through contacts to find each name and display them
-function onSuccess(contacts) {
-	for (var i=0; i<contacts.length; i++){
-		alert("Display Name = " + contacts[i].displayName);
-	}
+//Current Acceleration
+function onSuccess(acceleration) {
+	alert('Acceleration X: ' + acceleration.x + '\n' +
+    	  'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
 }
 
-//Error in trying to get contacts
-function onError(contactError) {
-	alert('Cannot Retrieve Contacts!')
+//Acceleration Erroe
+    function onError() {
+    	alert('Could Not Retrieve Acceleration!');
 }
 
 //Camera Native Feature
@@ -63,40 +61,56 @@ function onPhotoError(message){
 	alert('Photo Failed To Take Because: ' + message);
 }
 
-//Notification Native Feature
-/* function notificationsCapture(){
-	navigator.notification.alert(
-		'This Alert Works!', //message
-		alertGone, //callback
-		'Notification', //title
-		'OK', //buttonName
-		);
-} */
+//Device Native Feature
+function deviceCapture(){
+	var pad = document.getElementById('devicePad');
+        pad.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+                        'Device PhoneGap: ' + device.phonegap + '<br />' + 
+                        'Device Platform: ' + device.platform + '<br />' + 
+                        'Device UUID: '     + device.uuid     + '<br />' + 
+                        'Device Version: '  + device.version  + '<br />';
+}
 
-function twitterCall(url){
+function confirmBack(button){
+	alert("You selected " + button);
+}
+
+function twitterCall(){
 	$.ajax({
-			'url': 'http://search.twitter.com/search.json?q=barack%20obama',
-			'type': 'GET',
-			'dataType': 'jsonp',
-			'success': function(response){
-				for(i=0, j=response.results.length; i<j; i++){
-					var tweet = response.results[i];
-					$('<p>'+ '<img src="' + response.results[i].profile_image_url + '" />' + response.results[i].text + '</p>'				
-				).appendTo('#twitterFeed');
+		'url': 'http://search.twitter.com/search.json?q=barack%20obama',
+		'type': 'GET',
+		'dataType': 'jsonp',
+		'success': function(response){
+			for(i=0, j=response.results.length; i<j; i++){
+				var tweet = response.results[i];
+				$('<div id="tweetbox">'+
+				  "<img src='" + tweet.profile_image_url + "' />"+ '</br>' +
+				  '<p>'+ tweet.from_user +'</p>'+
+				  '<p>'+ tweet.from_user_name +'</p>'+
+				  '<p>'+ tweet.created_at +'</p>'+
+				  '<p>'+ tweet.text +'</p>'+
+				  '</div>'
+				 ).appendTo('#twitterFeed');
 			};
 		}
 	});
 }
 
-function vimeoCall(url){
+function vimeoCall(){
 	$.ajax({
-			'url': 'http://vimeo.com/api/v2/justinrowe/videos.json',
-			'type': 'GET',
-			'dataType': 'jsonp',
-			'success': function(data){
-				for(i=0, j=data.results.length; i<j; i++){
-					var movie = data.results[i];
-					$('<p>'+ '<img src="' + data.results[i].thumbnail_small + '" />' + data.results[i].title + '</p>'				
+		'url': 'http://vimeo.com/api/v2/justinrowe/videos.json?',
+		'type': 'GET',
+		'dataType': 'jsonp',
+		'success': function(response){
+			for(i=0, j=response.length; i<j; i++){
+				var movie = response[i];
+				$('<div id="videobox">'+
+				  "<img src='" + movie.thumbnail_large + "' />"+ '</br>' +
+				  '<p>'+ movie.title +'</p>'+
+				  '<p>'+ movie.upload_date +'</p>'+
+				  '<p>'+ movie.user_name +'</p>'+
+				  '<p>'+ movie.url +'</p>'+
+				  '</div>'				
 				).appendTo('#vimeoFeed');
 			};
 		}

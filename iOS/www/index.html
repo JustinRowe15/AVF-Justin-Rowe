@@ -35,18 +35,18 @@
         		<section class="apis">
         			<h2>iOS + Android Features</h2>
         			<button onclick="photoCapture();" class="gray button">Capture Photos</button>
-        			<button onclick="contactsCapture();" class="gray button">Contacts Database</button>
-        			<button onclick="notificationsCapture();" class="gray button">Notifications</button>
+        			<button onclick="acceleratorCapture();" class="gray button">Accelerator</button>
+        			<button id="devicePad" onclick="deviceCapture(); return false" class="gray button">My Device</button>
         			<button onclick="connectionCapture(); return false" class="gray button">Connection</button>
         		</section>
         		<section>
         			<h2>JSON-P Data APIs</h2>
-        				<button href="twitter.html" onclick="twitterCall();" class="gray button">Twitter API</button>
-        				<button href="vimeo.html" onclick="vimeoCall();" class="gray button">Vimeo API</button>
+        				<a href="twitter.html" class="gray button">Twitter API</a>
+        				<a href="vimeo.html" class="gray button">Vimeo API</a>
         		</section>	
         	</div>
         	<div id="bottombox">
-        		<section id="videobox">
+        		<section id="moviebox">
         		<video width="400" height="320" preload controls>
         			<source src="video/sample.mp4" type='video/mp4;codecs="H.264, AAC"' />
         			<source src="video/sample.webmhd.webm" type='video/webm;codecs="vp8, vorbis"' />
