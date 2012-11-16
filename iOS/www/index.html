@@ -12,12 +12,12 @@
         <title>BaseLine</title>
     </head>
     <body>
-    	<header>
-        	<p class="name">Justin Rowe</p>
-        	<p class="appName">Demo App</p>
-        	<p class="course">AVF 1211</p>
-        </header>
         <div class="page">
+        	<header>
+        		<p class="name">Justin Rowe<br>
+        		<p class="appName">Demo App<br>
+        		<p class="course">AVF 1211</p>
+        	</header>
 			<div id="topbox">
 				<section class="ghLinks">
         			<h2>GitHub Links</h2>
@@ -34,10 +34,10 @@
         	<div id="middlebox">
         		<section class="apis">
         			<h2>iOS + Android Features</h2>
-        			<button onclick="photoCapture();" class="gray button">Capture Photos</button>
-        			<button onclick="acceleratorCapture();" class="gray button">Accelerator</button>
-        			<button id="devicePad" onclick="deviceCapture(); return false" class="gray button">My Device</button>
-        			<button onclick="connectionCapture(); return false" class="gray button">Connection</button>
+        			<button id="photoCapture" class="gray button">Capture Photos</button>
+        			<button id="acceleratorCapture" class="gray button">Accelerator</button>
+        			<button id="deviceCapture" class="gray button">My Device</button>
+        			<button id="connectionCapture" class="gray button">Connection</button>
         		</section>
         		<section>
         			<h2>JSON-P Data APIs</h2>
@@ -47,24 +47,23 @@
         	</div>
         	<div id="bottombox">
         		<section id="moviebox">
-        		<video width="400" height="320" preload controls>
-        			<source src="video/sample.mp4" type='video/mp4;codecs="H.264, AAC"' />
-        			<source src="video/sample.webmhd.webm" type='video/webm;codecs="vp8, vorbis"' />
+        			<video width="400" height="320" preload controls>
+        				<source src="video/sample.mp4" type='video/mp4;codecs="H.264, AAC"' />
+        				<source src="video/sample.webmhd.webm" type='video/webm;codecs="vp8, vorbis"' />
+        			</video>
         		</section>
         	</div>
-        	</div>
+        	<footer>
+        		<section id="footerbox">
+        			<h1>Class Information</h1>
+        			<p>Name: Justin M. Rowe</p>
+        			<p>Course: AVF 1211</p>
+        		</section>
+        	</footer>
         </div><!--end page div-->
-        <footer>
-        	<section id="footerbox">
-        		<h1>Class Information</h1>
-        		<p>Name: Justin M. Rowe</p>
-        		<p>Course: AVF 1211</p>
-        	</section>
-        </footer>
         <script type="text/javascript" src="js/cordova-2.1.0.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        </script>
     </body>
 </html>

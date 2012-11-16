@@ -9,8 +9,23 @@ function onDeviceReady(){
 	console.log("Device Ready");
 }
 
+//getElementById function
+function ge(x) {
+	var element = document.getElementById(x);
+	return element;
+}
+
+var photoLink = ge('photoCapture');
+	photoLink.addEventListener("click", getPhoto);
+var acceleratorLink = ge('acceleratorCapture');
+	acceleratorLink.addEventListener("click", getAccelerator);
+var deviceLink = ge('deviceCapture');
+	deviceLink.addEventListener("click", getDevice);	
+var connectionLink = ge('connectionCapture');
+	connectionLink.addEventListener("click", getConnection);
+
 //Connection Capture Native Feature
-function connectionCapture(){
+function getConnection(){
 	var networkConnection = navigator.network.connection.type;
 	var capture = {};
 	capture[Connection.UNKNOWN]  = 'Unknown connection';
@@ -25,7 +40,7 @@ function connectionCapture(){
 }
 
 //Accelerator Native Feature
-function acceleratorCapture(){
+function getAccelerator(){
 	navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
 }
 
@@ -43,7 +58,7 @@ function onSuccess(acceleration) {
 }
 
 //Camera Native Feature
-function photoCapture(){
+function getPhoto(){
 	pictureSource=navigator.camera.PictureSourceType;
 	destinationType=navigator.camera.DestinationType;
 	navigator.camera.getPicture(onPhotoSuccess, onPhotoError, { quality: 50 });
@@ -62,8 +77,8 @@ function onPhotoError(message){
 }
 
 //Device Native Feature
-function deviceCapture(){
-	var pad = document.getElementById('devicePad');
+function getDevice(){
+	var pad = document.getElementById('deviceCapture');
         pad.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
                         'Device PhoneGap: ' + device.phonegap + '<br />' + 
                         'Device Platform: ' + device.platform + '<br />' + 
@@ -75,7 +90,7 @@ function confirmBack(button){
 	alert("You selected " + button);
 }
 
-function twitterCall(){
+function getTwitter(){
 	$.ajax({
 		'url': 'http://search.twitter.com/search.json?q=barack%20obama',
 		'type': 'GET',
@@ -96,7 +111,7 @@ function twitterCall(){
 	});
 }
 
-function vimeoCall(){
+function getVimeo(){
 	$.ajax({
 		'url': 'http://vimeo.com/api/v2/justinrowe/videos.json?',
 		'type': 'GET',
